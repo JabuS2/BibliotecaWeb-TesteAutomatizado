@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Biblioteca";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h2>Cadastro de Livro</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="Titulo">Título:</label>
+        <input type="text" class="form-control" id="Titulo" name="Titulo">
+    </div>
+    <div class="form-group">
+        <label for="AnoPublicacao">Ano de Publicação:</label>
+        <input type="text" class="form-control" id="AnoPublicacao" name="AnoPublicacao">
+    </div>
+    <button type="submit" id="btnSalvar" class="btn btn-primary">Cadastrar Livro</button>
+</form>
+
+<hr />
+
+<h2>Buscar Livro por ID</h2>
+<form method="get">
+    <div class="form-group">
+        <label for="IdBusca">ID do Livro:</label>
+        <input type="text" class="form-control" id="IdBusca" name="IdBusca">
+    </div>
+    <button type="submit" id="btnPesquisar" class="btn btn-primary">Buscar Livro</button>
+</form>
+
+<hr />
+
+<h2>Listagem de Livros</h2>
+<ul id="livrosList" class="list-group">
+    @foreach (var livro in Model.Livros)
+    {
+        <li class="list-group-item">@livro.Titulo (Ano: @livro.AnoPublicacao)</li>
+    }
+</ul>
